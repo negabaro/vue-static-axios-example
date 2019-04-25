@@ -33,10 +33,22 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import axios from "axios";
 
 @Component
 export default class HelloWorld extends Vue {
   @Prop() private msg!: string;
+
+created() {
+    // Fetch Data
+    this.fetchData();
+  }
+
+  fetchData() {
+    axios.get("http://localhost:8080/" + "test.json").then(response => {
+      console.log("response:", response);
+    });
+  }
 }
 </script>
 
